@@ -26,7 +26,7 @@ namespace Microsoft.Xna.Framework.Graphics
 		SpriteEffect _spriteEffect;
         readonly EffectPass _spritePass;
 
-		Rectangle _tempRect = new Rectangle (0,0,0,0);
+		RectangleF _tempRect = new RectangleF (0,0,0,0);
 		Vector2 _texCoordTL = new Vector2 (0,0);
 		Vector2 _texCoordBR = new Vector2 (0,0);
         #endregion
@@ -178,7 +178,7 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="layerDepth">A depth of the layer of this sprite.</param>
 		public void Draw (Texture2D texture,
 				Vector2 position,
-				Rectangle? sourceRectangle,
+				RectangleF? sourceRectangle,
 				Color color,
 				float rotation,
 				Vector2 origin,
@@ -286,7 +286,7 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="layerDepth">A depth of the layer of this sprite.</param>
 		public void Draw (Texture2D texture,
 				Vector2 position,
-				Rectangle? sourceRectangle,
+				RectangleF? sourceRectangle,
 				Color color,
 				float rotation,
 				Vector2 origin,
@@ -310,8 +310,8 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="effects">Modificators for drawing. Can be combined.</param>
         /// <param name="layerDepth">A depth of the layer of this sprite.</param>
 		public void Draw (Texture2D texture,
-			Rectangle destinationRectangle,
-			Rectangle? sourceRectangle,
+			RectangleF destinationRectangle,
+			RectangleF? sourceRectangle,
 			Color color,
 			float rotation,
 			Vector2 origin,
@@ -349,21 +349,21 @@ namespace Microsoft.Xna.Framework.Graphics
                 _texCoordBR.Y = (srcRect.Y + srcRect.Height) * texture.TexelHeight;
 
                 if(srcRect.Width != 0)
-                    origin.X = origin.X * (float)destinationRectangle.Width / (float)srcRect.Width;
+                    origin.X = origin.X * destinationRectangle.Width / srcRect.Width;
                 else
-                    origin.X = origin.X * (float)destinationRectangle.Width * texture.TexelWidth;
+                    origin.X = origin.X * destinationRectangle.Width * texture.TexelWidth;
                 if(srcRect.Height != 0)
-                    origin.Y = origin.Y * (float)destinationRectangle.Height / (float)srcRect.Height; 
+                    origin.Y = origin.Y * destinationRectangle.Height / srcRect.Height; 
                 else
-                    origin.Y = origin.Y * (float)destinationRectangle.Height * texture.TexelHeight;
+                    origin.Y = origin.Y * destinationRectangle.Height * texture.TexelHeight;
             }
             else
             {
                 _texCoordTL = Vector2.Zero;
                 _texCoordBR = Vector2.One;
                 
-                origin.X = origin.X * (float)destinationRectangle.Width  * texture.TexelWidth;
-                origin.Y = origin.Y * (float)destinationRectangle.Height * texture.TexelHeight;
+                origin.X = origin.X * destinationRectangle.Width  * texture.TexelWidth;
+                origin.Y = origin.Y * destinationRectangle.Height * texture.TexelHeight;
             }
             
 			if ((effects & SpriteEffects.FlipVertically) != 0)
@@ -425,7 +425,7 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="position">The drawing location on screen.</param>
         /// <param name="sourceRectangle">An optional region on the texture which will be rendered. If null - draws full texture.</param>
         /// <param name="color">A color mask.</param>
-		public void Draw (Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color)
+		public void Draw (Texture2D texture, Vector2 position, RectangleF? sourceRectangle, Color color)
 		{
 			CheckValid(texture);
             
@@ -472,7 +472,7 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="destinationRectangle">The drawing bounds on screen.</param>
         /// <param name="sourceRectangle">An optional region on the texture which will be rendered. If null - draws full texture.</param>
         /// <param name="color">A color mask.</param>
-		public void Draw (Texture2D texture, Rectangle destinationRectangle, Rectangle? sourceRectangle, Color color)
+		public void Draw (Texture2D texture, RectangleF destinationRectangle, RectangleF? sourceRectangle, Color color)
 		{
             CheckValid(texture);
             
@@ -542,7 +542,7 @@ namespace Microsoft.Xna.Framework.Graphics
         /// <param name="texture">A texture.</param>
         /// <param name="destinationRectangle">The drawing bounds on screen.</param>
         /// <param name="color">A color mask.</param>
-        public void Draw(Texture2D texture, Rectangle destinationRectangle, Color color)
+        public void Draw(Texture2D texture, RectangleF destinationRectangle, Color color)
 		{
             CheckValid(texture);
             
