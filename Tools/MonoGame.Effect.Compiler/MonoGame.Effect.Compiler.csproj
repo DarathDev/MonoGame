@@ -48,6 +48,7 @@
     <Compile Include="..\..\MonoGame.Framework\Quaternion.cs" />
     <Compile Include="..\..\MonoGame.Framework\Ray.cs" />
     <Compile Include="..\..\MonoGame.Framework\Rectangle.cs" />
+    <Compile Include="..\..\MonoGame.Framework\RectangleF.cs" />
     <Compile Include="..\..\MonoGame.Framework\Vector2.cs" />
     <Compile Include="..\..\MonoGame.Framework\Vector3.cs" />
     <Compile Include="..\..\MonoGame.Framework\Vector4.cs" />

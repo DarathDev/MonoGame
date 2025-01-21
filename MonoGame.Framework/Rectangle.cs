@@ -227,6 +227,16 @@ namespace Microsoft.Xna.Framework
             return !(a == b);
         }
 
+        /// <summary>
+        /// Converts a <see cref="Rectangle"/> to a <see cref="RectangleF"/>.
+        /// </summary>
+        /// <param name="a"><see cref="Rectangle"/> to be converted.</param>
+        /// <returns><see cref="RectangleF"/> new instance.</returns>
+        public static implicit operator RectangleF(Rectangle rectangle)
+        {
+            return new RectangleF(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
+        }
+
         #endregion
 
         #region Public Methods
